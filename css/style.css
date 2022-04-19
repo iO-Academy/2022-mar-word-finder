@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Roboto:wght@400;700;900&display=swap');
+* {
+    font-family: 'Roboto', sans-serif;
+    font-size: 24px;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/*Untility*/
+
+#wrapper,
+header,
+form {
+    display: flex;
+}
+
+
+/*Main body*/
+
+#wrapper {
+    margin: auto;
+    flex-direction: column;
+    align-content: center;
+    width: 70%;
+}
+
+header {
+    justify-content: space-between;
+    align-items: center;
+}
+
+h1,
+h2 {
+    font-size: 1.5rem;
+}
+
+.syn-header {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 1.3rem;
+}
+
+/*Syn output*/
+
+.synonyms {
+    text-align: center;
+    line-height: 1.6rem;
+    margin-bottom: 2rem;
+}
+
+/*input field*/
+
+.input {
+    min-width: 70%;
+    max-width: 70%;
+    border: none;
+    background: #333;
+}
+
+form {
+    justify-content: space-between;
+}
+
+.btn {
+    border: none;
+    padding: 0.3rem;
+}
+
+@media only screen and (min-width: 600px) {
+    #wrapper {
+        width: 40%;
+    }
+}
+
+@media only screen and (min-width: 700px) {
+    #wrapper {
+        width: 45%;
+    }
+}
+
+@media only screen and (min-width: 800px) {
+    #wrapper {
+        width: 37%;
+    }
+}
+
+@media only screen and (min-width: 900px) {
+    #wrapper {
+        width: 30%;
+    }
+}
+
+
+
+
