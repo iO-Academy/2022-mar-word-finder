@@ -7,23 +7,22 @@ const extractWords = (response) => {
 
 const processWords = (wordList) => {
     const allData = wordList.data;
-    pickWord(allData);
+    answer = pickWord(allData);
 }
 
-console.log(fetch('json/words.json')
+fetch('json/words.json')
     .then(extractWords)
-    .then(processWords));
+    .then(processWords);
+
+let answer; // this is a global variable, the result of the pickWord() function. This is bad practice.
 
 function pickWord(allData) {
+
     let allWords = (Object.keys(allData));
-    console.log(typeof (allWords));
-    console.log(allWords);
     let targetWord = allWords[Math.floor(Math.random() * allWords.length)];
     console.log(targetWord);
     let targetSyns = allData[targetWord];
-    console.log(targetSyns);
     targetSyns.forEach(item => {
-        console.log(item)
     })
     let html = '';
     targetSyns.forEach(item => {
@@ -34,4 +33,28 @@ function pickWord(allData) {
     });
     let container = document.querySelector('.container');
     container.innerHTML = html;
-};
+    return targetWord;
+}
+
+const submitButton = document.querySelector('.submit-btn');
+
+const submitFunction = (event) => {
+    event.preventDefault();
+    const userGuess = document.querySelector('#guess').value;
+    console.log(userGuess);
+
+    // Guess logic
+
+    if (answer === userGuess) {
+        console.log('Nice');
+    } else {
+        console.log('You suck');
+    }
+}
+
+submitButton.addEventListener('click', submitFunction);
+
+
+
+
+
