@@ -1,0 +1,8 @@
+WordFinder is a guess the word game designed to challenge your knowledge of words.
+
+How to play
+
+1 - Guess the word based on the synonyms provided.
+2 - Press the guess button to submit your guess.
+3 - If your guess is correct, a new set of synonyms will be displayed so you can guess a new word.
+
