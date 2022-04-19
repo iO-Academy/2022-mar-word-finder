@@ -7,6 +7,10 @@
     --font: #ffffff;
 }
 
+.game {
+    display: none;
+}
+
 * {
     font-family: 'Roboto', sans-serif;
     font-size: 24px;
@@ -114,7 +118,8 @@ form {
     transition: 0.3s;
 }
 
-.btn:hover {
+.btn:hover,
+.instructions button:hover {
     border: 1px solid var(--font);
     background: var(--bg);
     color: var(--font);
@@ -136,6 +141,18 @@ form {
     font-size: 0.8rem;
     padding: 0.2rem;
     margin-left: 1rem;
+}
+
+.instructions button {
+    width: 50%;
+    text-align: center;
+    margin: 2rem auto;
+    border: 1px solid var(--bg);
+    padding: 0.3rem;
+    border-radius: 8px;
+    height: 1.5rem;
+    font-size: 0.8rem;
+    transition: 0.3s;
 }
 
 @media only screen and (min-width: 440px) {
