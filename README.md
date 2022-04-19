@@ -1,2 +1,2 @@
-# 2022 Marh Foxy Ferrets Word Finder
+# 2022 March Foxy Ferrets Word Finder
 A JavaScript game.
