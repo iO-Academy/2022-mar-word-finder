@@ -23,16 +23,23 @@ form {
 
 /*Main body*/
 
+main {
+    display: flex;
+    flex-direction: column;
+}
+
 body {
     background: var(--bg);
     color: var(--font);
 }
 
 #wrapper {
-    margin: auto;
     flex-direction: column;
     align-content: center;
+    margin: 0.8rem auto 0 auto;
     padding: 1rem;
+    width: 90%;
+    border: 1px solid var(--font);
 }
 
 /*Header*/
@@ -40,15 +47,18 @@ body {
 header {
     justify-content: space-between;
     align-items: center;
-    padding-top: 2rem;
-}
-
-h1,
-h2 {
-    font-size: 1.5rem;
+    padding: 0.5rem;
 }
 
 h1 {
+    font-size: 1.2rem;
+}
+
+h2 {
+    font-size: 1rem;
+}
+
+.logo {
     background: var(--font);
     color: #333333;
     padding: 0 0.5rem;
@@ -57,7 +67,7 @@ h1 {
 .syn-header {
     text-align: center;
     margin-bottom: 1rem;
-    font-size: 1.3rem;
+    font-size: 1rem;
 }
 
 hr {
@@ -68,31 +78,40 @@ hr {
 
 .synonyms {
     text-align: center;
-    line-height: 1.6rem;
+    line-height: 1.4rem;
     margin-bottom: 2rem;
+}
+
+.synonyms > p {
+    font-size: 0.8rem;
 }
 
 /*Input field*/
 
 .input {
-    min-width: 70%;
-    max-width: 70%;
+    width: 80%;
     border: 1px solid #d5d5d5;
     background: var(--bg);
     border-radius: 8px;
-    padding-left: 1rem;
+    padding-left: 0.5rem;
     line-height: 1.4rem;
     color: var(--font);
+    font-size: 0.8rem;
+    height: 1.5rem;
 }
 
 form {
     justify-content: space-between;
+    column-gap: 0.6rem;
 }
 
 .btn {
     border: 1px solid var(--bg);
     padding: 0.3rem;
     border-radius: 8px;
+    height: 1.5rem;
+    font-size: 0.8rem;
+    transition: 0.3s;
 }
 
 .btn:hover {
@@ -101,29 +120,13 @@ form {
     color: var(--font);
 }
 
-@media only screen and (min-width: 600px) {
-
-    /*Body*/
-
+@media only screen and (min-width: 440px) {
     #wrapper {
-        width: 30%;
-    }
-
-    /*Header */
-
-    h1,
-    h2 {
-        font-size: 2rem;
-    }
-
-    .syn-header {
-        margin-top: 1.5rem;
-    }
-
-    hr {
-        margin-bottom: 1.5rem;
+        width: 394px;
     }
 }
+
+
 
 
 
