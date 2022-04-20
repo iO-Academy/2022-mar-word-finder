@@ -66,7 +66,7 @@ const submitFunction = (event) => {
     } else {
         console.log('You suck');
         const incorrect = document.createTextNode(`Incorrect!`);
-        results.appendChild(incorrect);
+        results.appendChild(incorrect); 
     }
 }
 
