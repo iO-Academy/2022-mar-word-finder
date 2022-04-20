@@ -11,6 +11,7 @@ const extractWords = (response) => {
     const wordList = response.json();
     return wordList;
 }
+
 const processWords = (wordList) => {
     allData = wordList.data;
     console.log(allData);
@@ -38,7 +39,6 @@ playAgain.style.display ='none';
 playAgain.addEventListener('click', handleButtonClick);
 
 function pickWord(allData) {
-
     let allKeys = (Object.keys(allData));
     let randomWord = allKeys[Math.floor(Math.random() * allKeys.length)];
     if (usedWords.length === allData.length) {
