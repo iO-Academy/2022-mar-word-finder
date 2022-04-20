@@ -1,4 +1,4 @@
-/*Untility*/
+/*Utility*/
 
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Roboto:wght@400;700;900&display=swap');
 
@@ -23,6 +23,16 @@
 header,
 form {
     display: flex;
+}
+
+ul {
+    list-style-type: none;
+}
+
+#results {
+    visibility: hidden;
+    text-align: center;
+    margin-top: 1rem;
 }
 
 /*Main body*/
@@ -70,7 +80,7 @@ h2 {
 
 .syn-header {
     text-align: center;
-    margin-bottom: 1rem;
+    margin-bottom: 1.4rem;
     font-size: 1rem;
 }
 
@@ -80,19 +90,23 @@ hr {
 
 /*Synonym output*/
 
-.synonyms {
+#container {
     text-align: center;
     line-height: 1.4rem;
     margin-bottom: 2rem;
 }
 
-.synonyms > p {
+#container > li {
     font-size: 0.8rem;
+}
+
+ul {
+    list-style-type: none;
 }
 
 /*Input field*/
 
-.input {
+#guess {
     width: 80%;
     border: 1px solid #d5d5d5;
     background: var(--bg);
@@ -109,7 +123,7 @@ form {
     column-gap: 0.6rem;
 }
 
-.btn {
+.submit-btn {
     border: 1px solid var(--bg);
     padding: 0.3rem;
     border-radius: 8px;
@@ -118,7 +132,7 @@ form {
     transition: 0.3s;
 }
 
-.btn:hover,
+.submit-btn:hover,
 .instructions button:hover {
     border: 1px solid var(--font);
     background: var(--bg);
