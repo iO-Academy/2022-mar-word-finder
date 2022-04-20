@@ -93,12 +93,6 @@ function pickWord(allData) {
     return randomWord;
 }
 
-function noRemainingGuesses() {
-    if(remainingGuesses === 0){
-        playNextRound();
-    }
-}
-
 function updateScoreDisplay() {
     const userScore = document.querySelector('#score');
     userScore.innerHTML = totalScore;
@@ -132,7 +126,6 @@ const submitFunction = (event) => {
         score = remainingGuesses
         console.log(score);
         submitButton.style.visibility = 'visible'
-        noRemainingGuesses();
     }
 }
 
