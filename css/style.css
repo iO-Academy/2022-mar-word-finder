@@ -25,10 +25,6 @@ form {
     display: flex;
 }
 
-ul {
-    list-style-type: none;
-}
-
 #results {
     visibility: hidden;
     text-align: center;
