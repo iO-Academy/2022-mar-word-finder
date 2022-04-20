@@ -89,7 +89,7 @@ function pickWord(allData) {
 
 const submitFunction = (event) => {
     event.preventDefault();
-    const userGuess = document.querySelector('#guess').value;
+    let userGuess = document.querySelector('#guess').value;
     console.log(userGuess);
 
     // Guess logic
@@ -101,10 +101,14 @@ const submitFunction = (event) => {
         console.log(usedWords);
         playAgain.style.display ='block';
         results.style.visibility ='visible';
+        document.querySelector('#guess').value = '';
+        document.querySelector('#guess').placeholder = userGuess;
     } else {
         console.log('You suck');
         results.innerHTML = '';
         results.appendChild(incorrect);
+        document.querySelector('#guess').value = '';
+        document.querySelector('#guess').placeholder = userGuess;
         results.style.visibility ='visible';
     }
 }
