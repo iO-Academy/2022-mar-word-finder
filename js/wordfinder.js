@@ -95,14 +95,17 @@ const submitFunction = (event) => {
     // Guess logic
     if (answer === userGuess) {
         console.log('Nice');
+        results.innerHTML = '';
         results.appendChild(correct);
         usedWords.push(answer);
         console.log(usedWords);
         playAgain.style.display ='block';
+        results.style.visibility ='visible';
     } else {
         console.log('You suck');
         results.innerHTML = '';
         results.appendChild(incorrect);
+        results.style.visibility ='visible';
     }
 }
 

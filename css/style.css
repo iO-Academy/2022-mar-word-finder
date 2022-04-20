@@ -119,7 +119,8 @@ form {
     column-gap: 0.6rem;
 }
 
-.submit-btn {
+.submit-btn,
+#again {
     border: 1px solid var(--bg);
     padding: 0.3rem;
     border-radius: 8px;
@@ -129,7 +130,8 @@ form {
 }
 
 .submit-btn:hover,
-.instructions button:hover {
+.instructions button:hover,
+#again:hover {
     border: 1px solid var(--font);
     background: var(--bg);
     color: var(--font);
