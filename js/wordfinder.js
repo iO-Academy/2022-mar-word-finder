@@ -24,6 +24,7 @@ const startButton = document.querySelector('#start');
 
 const handleButtonClick = (event) => {
     event.preventDefault();
+    playAgain.style.display ='none';
     answer = pickWord(allData);
     console.log(answer);
     return answer;
