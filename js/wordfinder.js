@@ -1,6 +1,9 @@
 let answer;
 let usedWords = [];
 let allData = {};
+let score = 0;
+let remainingGuesses;
+let totalScore = 0;
 const submitButton = document.querySelector('.submit-btn');
 const results = document.querySelector('#results');
 const correct = document.createTextNode('Correct!');
@@ -43,16 +46,22 @@ fetch('json/words.json')
 
 const playButton = document.querySelector('#start');
 
-const handlePlayButtonClick = (event) => {
-    event.preventDefault();
+function playNextRound () {
+    submitButton.style.visibility = 'visible';
     playAgain.style.display ='none';
     document.querySelector('#guess').placeholder = 'Your Guess is...'
     if (usedWords.length === allData.length) {
         return '';
     }
+    remainingGuesses = 5;
     answer = pickWord(allData);
     showSynonyms(answer);
+    updateScoreDisplay();
     return answer;
+}
+const handlePlayButtonClick = (event) => {
+    event.preventDefault();
+    playNextRound();
 }
 
 playButton.addEventListener('click', handlePlayButtonClick);
@@ -84,6 +93,17 @@ function pickWord(allData) {
     return randomWord;
 }
 
+function noRemainingGuesses() {
+    if(remainingGuesses === 0){
+        playNextRound();
+    }
+}
+
+function updateScoreDisplay() {
+    const userScore = document.querySelector('#score');
+    userScore.innerHTML = totalScore;
+}
+
 const submitFunction = (event) => {
     event.preventDefault();
     let userGuess = document.querySelector('#guess').value;
@@ -97,14 +117,23 @@ const submitFunction = (event) => {
         results.style.visibility = 'visible';
         document.querySelector('#guess').value = '';
         document.querySelector('#guess').placeholder = userGuess;
+        score = remainingGuesses
+        totalScore += score
+        console.log(`total score ${totalScore}`)
+        submitButton.style.visibility = 'hidden'
+        updateScoreDisplay();
     } else {
         results.innerHTML = '';
         results.appendChild(incorrect);
         document.querySelector('#guess').value = '';
         document.querySelector('#guess').placeholder = userGuess;
         results.style.visibility = 'visible';
+        remainingGuesses --;
+        score = remainingGuesses
+        console.log(score);
+        submitButton.style.visibility = 'visible'
+        noRemainingGuesses();
     }
 }
 
 submitButton.addEventListener('click', submitFunction);
-
