@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>W | Word Finder</title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/button.js" defer></script>
+</head>
+<body>
+<div id="wrapper">
+    <header>
+        <h1 class="logo">W</h1>
+        <h1 class="title">WordFinder</h1>
+    </header>
+    <main>
+        <div class="instructions">
+            <h3>Instructions</h3>
+            <p>WordFinder is a guess the word game designed to challenge your knowledge of words.</p>
+            <ol>
+                <li>Guess the word based on the synonyms provided.</li>
+                <li>Press the guess button to submit your guess.</li>
+                <li>If your guess is correct, a new set of synonyms will be displayed so you can guess a new word.</li>
+            </ol>
+            <button id="start">Start Game</button>
+        </div>
+        <div class="game">
+            <h2 class="syn-header">Synonyms</h2>
+            <hr>
+            <ul id="container">
+                <li>Put Down</li>
+                <li>Humiliate</li>
+                <li>Cut down</li>
+            </ul>
+            <form>
+                <input id="guess" type="text" placeholder="Your Guess is...">
+                <button type="submit" class="submit-btn">Guess</button>
+            </form>
+            <p id="results">placeholder</p>
+        </div>
+    </main>
+</div>
+</body>
+</html>
