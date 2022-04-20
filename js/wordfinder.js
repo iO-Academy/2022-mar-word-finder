@@ -6,6 +6,26 @@ const results = document.querySelector('#results');
 const correct = document.createTextNode(`Correct!`);
 const incorrect = document.createTextNode(`Incorrect!`);
 
+const startButton = document.querySelector('#start');
+
+const handleButtonClick = (event) => {
+
+    const instructions = document.querySelector('.instructions');
+    const game = document.querySelector('.game');
+
+    if (instructions.style.display === 'none') {
+        instructions.style.display = 'block';
+        game.style.display = 'none';
+        startButton.innerText = 'hide';
+    }
+    else {
+        instructions.style.display = 'none';
+        game.style.display = 'block';
+    }
+}
+
+startButton.addEventListener('click', handleButtonClick);
+
 // Fetch data from json file and return the words object without the description.
 const extractWords = (response) => {
     const wordList = response.json();
@@ -21,9 +41,10 @@ const processWords = (wordList) => {
 fetch('json/words.json')
     .then(extractWords)
     .then(processWords);
-const startButton = document.querySelector('#start');
 
-const handleButtonClick = (event) => {
+const playButton = document.querySelector('#start');
+
+const handlePlayButtonClick = (event) => {
     event.preventDefault();
     playAgain.style.display ='none';
     answer = pickWord(allData);
@@ -31,12 +52,12 @@ const handleButtonClick = (event) => {
     return answer;
 }
 
-startButton.addEventListener('click', handleButtonClick);
+playButton.addEventListener('click', handlePlayButtonClick);
 
 const playAgain = document.querySelector('#again');
 playAgain.style.display ='none';
 
-playAgain.addEventListener('click', handleButtonClick);
+playAgain.addEventListener('click', handlePlayButtonClick);
 
 function pickWord(allData) {
     let allKeys = (Object.keys(allData));
