@@ -1,55 +1,42 @@
-let answer; // this is a global variable, the result of the pickWord() function. This is bad practice.
-let usedWords = [];
-let allData = {};
-
 // Fetch data from json file and return the words object without the description.
-const startButton = document.querySelector('#start');
-
-const handleButtonClick = (event) => {
-    event.preventDefault();
-    answer = pickWord(allData);
-    console.log(answer);
-    return answer;
-}
-
-startButton.addEventListener('click', handleButtonClick);
 
 const extractWords = (response) => {
     const wordList = response.json();
     return wordList;
 }
+
 const processWords = (wordList) => {
-    allData = wordList.data;
-    console.log(allData);
-    return allData;
+    const allData = wordList.data;
+    answer = pickWord(allData);
 }
 
 fetch('json/words.json')
     .then(extractWords)
     .then(processWords);
 
+let answer; // this is a global variable, the result of the pickWord() function. This is bad practice.
+
 function pickWord(allData) {
 
-    let allKeys = (Object.keys(allData));
-    let randomWord = allKeys[Math.floor(Math.random() * allKeys.length)];
-    console.log(randomWord);
-    let synonyms = allData[randomWord];
-    let container = document.querySelector('#container');
-    console.log(synonyms);
-    console.log(typeof(synonyms));
-    synonyms.forEach(item => {
-        const listItem = document.createElement('li');
-        const textNode = document.createTextNode(`${item}`);
-        listItem.appendChild(textNode);
-        container.appendChild(listItem);
-        console.log(item);
+    let allWords = (Object.keys(allData));
+    let targetWord = allWords[Math.floor(Math.random() * allWords.length)];
+    console.log(targetWord);
+    let targetSyns = allData[targetWord];
+    targetSyns.forEach(item => {
+    })
+    let html = '';
+    targetSyns.forEach(item => {
+        let htmlSegment = `<div class="datum">
+                          <h2>${item}</h2>
+                         </div>`;
+        html += htmlSegment;
     });
-    // console.log(container);
-    return randomWord;
+    let container = document.querySelector('.container');
+    container.innerHTML = html;
+    return targetWord;
 }
 
 const submitButton = document.querySelector('.submit-btn');
-const results = document.querySelector('#results');
 
 const submitFunction = (event) => {
     event.preventDefault();
@@ -57,16 +44,11 @@ const submitFunction = (event) => {
     console.log(userGuess);
 
     // Guess logic
+
     if (answer === userGuess) {
         console.log('Nice');
-        const correct = document.createTextNode(`Correct!`);
-        results.appendChild(correct);
-        usedWords.push(answer);
-        console.log(usedWords);
     } else {
         console.log('You suck');
-        const incorrect = document.createTextNode(`Incorrect!`);
-        results.appendChild(incorrect);
     }
 }
 
