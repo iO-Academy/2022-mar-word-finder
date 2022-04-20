@@ -38,21 +38,18 @@ function pickWord(allData) {
     console.log(synonyms);
     console.log(typeof(synonyms));
     synonyms.forEach(item => {
-        const listItem = document.createElement('p');
+        const listItem = document.createElement('li');
         const textNode = document.createTextNode(`${item}`);
         listItem.appendChild(textNode);
         container.appendChild(listItem);
         console.log(item);
     });
-
-
-
-
     // console.log(container);
     return randomWord;
 }
 
 const submitButton = document.querySelector('.submit-btn');
+const results = document.querySelector('#results');
 
 const submitFunction = (event) => {
     event.preventDefault();
@@ -60,12 +57,16 @@ const submitFunction = (event) => {
     console.log(userGuess);
 
     // Guess logic
-
     if (answer === userGuess) {
         console.log('Nice');
-
+        const correct = document.createTextNode(`Correct!`);
+        results.appendChild(correct);
+        usedWords.push(answer);
+        console.log(usedWords);
     } else {
         console.log('You suck');
+        const incorrect = document.createTextNode(`Incorrect!`);
+        results.appendChild(incorrect);
     }
 }
 
