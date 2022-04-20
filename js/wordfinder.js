@@ -62,11 +62,11 @@ const submitFunction = (event) => {
         const correct = document.createTextNode(`Correct!`);
         results.appendChild(correct);
         usedWords.push(answer);
-        console.log(usedWords);
+        console.log(usedWords);  
     } else {
         console.log('You suck');
         const incorrect = document.createTextNode(`Incorrect!`);
-        results.appendChild(incorrect); 
+        results.appendChild(incorrect);
     }
 }
 
