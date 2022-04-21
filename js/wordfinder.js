@@ -39,13 +39,14 @@ fetch('json/words.json')
     .then(processWords);
 
 const playButton = document.querySelector('#start');
+const guess = document.querySelector('#guess');
 
 function playNextRound () {
     submitButton.style.visibility = 'visible';
     results.style.visibility = 'hidden';
-    document.querySelector('#guess').style.visibility = 'visible';
+    guess.style.visibility = 'visible'
     playAgain.style.display ='none';
-    document.querySelector('#guess').placeholder = 'Your Guess is...';
+    guess.placeholder = 'Your Guess is...';
     if (usedWords.length === allData.length) {
         return '';
     }
@@ -56,6 +57,7 @@ function playNextRound () {
     updateRemainingGuesses(remainingGuesses);
     return answer;
 }
+
 const handlePlayButtonClick = (event) => {
     event.preventDefault();
     playNextRound();
@@ -90,7 +92,7 @@ function pickWord(allData) {
 }
 
 function noRemainingGuesses() {
-    if(remainingGuesses === 0){
+    if (remainingGuesses === 0) {
         submitButton.style.visibility = 'hidden';
         playAgain.style.display = 'block';
         document.querySelector('#guess').style.visibility = 'hidden';
@@ -115,7 +117,7 @@ function  pointCalculation(userGuess) {
         totalScore += roundScore;
         updateScoreDisplay(roundScore);
     } else {
-        remainingGuesses --;
+        remainingGuesses--;
         noRemainingGuesses();
         updateRemainingGuesses(remainingGuesses);
     }
