@@ -54,6 +54,7 @@ function playNextRound () {
     answer = pickWord(allData);
     showSynonyms(answer);
     updateScoreDisplay();
+    updateRemainingGuesses(remainingGuesses);
     return answer;
 }
 const handlePlayButtonClick = (event) => {
@@ -98,8 +99,13 @@ function noRemainingGuesses() {
 }
 
 function updateScoreDisplay() {
-    const userScore = document.querySelector('#score');
-    userScore.innerHTML = totalScore;
+    const userScore = document.querySelector('.score');
+    userScore.innerText = totalScore;
+}
+
+function updateRemainingGuesses(remainingGuesses) {
+    const userScore = document.querySelector('.guesses-remaining');
+    userScore.innerText = remainingGuesses;
 }
 
 const submitFunction = (event) => {
@@ -135,6 +141,7 @@ const submitFunction = (event) => {
         noRemainingGuesses();
         results.appendChild(incorrect);
         console.log(remainingGuesses);
+        updateRemainingGuesses(remainingGuesses);
     }
 }
 
