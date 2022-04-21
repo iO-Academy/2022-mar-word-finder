@@ -38,7 +38,6 @@ form {
     visibility: hidden;
     text-align: center;
     padding-top: 0.5rem;
-
 }
 
 /*Main body*/
@@ -89,11 +88,6 @@ h3 {
 ol > li {
     color: #09bba9;
 }
-
-/*.syn-header {*/
-/*    text-align: center;*/
-/*    */
-/*}*/
 
 hr {
     margin-bottom: 1rem;
