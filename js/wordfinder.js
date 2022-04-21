@@ -158,7 +158,6 @@ submitButton.addEventListener('click', submitFunction);
 
 const timeDiv = document.querySelector('#clock');
 
-
 function countdown() {
     if (timeLeft === -1) {
         timeDiv.innerText = "Unlucky - Time's Up!";
