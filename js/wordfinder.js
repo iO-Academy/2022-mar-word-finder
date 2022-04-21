@@ -1,13 +1,10 @@
 let answer;
 let usedWords = [];
 let allData = {};
-let score = 0;
-let remainingGuesses;
+let remainingGuesses = 5;
 let totalScore = 0;
 const submitButton = document.querySelector('.submit-btn');
 const results = document.querySelector('#results');
-const correct = document.createTextNode('Correct!');
-const incorrect = document.createTextNode('Incorrect!');
 
 const startButton = document.querySelector('#start');
 
@@ -95,7 +92,8 @@ function pickWord(allData) {
 
 function noRemainingGuesses() {
     if(remainingGuesses === 0){
-        playNextRound();
+        submitButton.style.visibility = 'hidden'
+        playAgain.style.display = 'block';
     }
 }
 
@@ -105,6 +103,8 @@ function updateScoreDisplay() {
 }
 
 const submitFunction = (event) => {
+    let roundScore;
+    const correct = document.createTextNode(`Correct! You scored: ${remainingGuesses} points`);
     event.preventDefault();
     let userGuess = document.querySelector('#guess').value;
 
@@ -113,26 +113,28 @@ const submitFunction = (event) => {
         results.innerHTML = '';
         results.appendChild(correct);
         usedWords.push(answer);
-        playAgain.style.display = 'block';
         results.style.visibility = 'visible';
         document.querySelector('#guess').value = '';
         document.querySelector('#guess').placeholder = userGuess;
-        score = remainingGuesses
-        totalScore += score
+        roundScore = remainingGuesses
+        totalScore += roundScore
         console.log(`total score ${totalScore}`)
         submitButton.style.visibility = 'hidden'
         updateScoreDisplay();
+        setTimeout(playNextRound, 1500);
     } else {
         results.innerHTML = '';
-        results.appendChild(incorrect);
         document.querySelector('#guess').value = '';
         document.querySelector('#guess').placeholder = userGuess;
         results.style.visibility = 'visible';
         remainingGuesses --;
-        score = remainingGuesses
-        console.log(score);
+        roundScore = remainingGuesses
+        console.log(roundScore);
+        const incorrect = document.createTextNode(`Incorrect! Guesses remaining ${roundScore}`);
         submitButton.style.visibility = 'visible'
         noRemainingGuesses();
+        results.appendChild(incorrect);
+        console.log(remainingGuesses);
     }
 }
 
