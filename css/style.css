@@ -189,14 +189,14 @@ form {
 }
 
 .submit-btn:hover {
-    background-image: linear-gradient(to right, var(--bg), var(--bg), var(--bg), var(--bg), var(--bg), var(--lblue));
+    background-image: linear-gradient(to right, var(--bg) 85%, var(--lblue));
     animation: slideguess 0.2s linear;
     cursor: pointer;
 }
 
 .instructions button:hover,
 #again:hover {
-    background-image: linear-gradient(to right, var(--bg), var(--bg), var(--bg), var(--bg), var(--bg), var(--lblue));
+    background-image: linear-gradient(to right, var(--bg) 95%, var(--lblue));
     animation: slidebg 0.2s linear;
     cursor: pointer;
 }
