@@ -123,7 +123,7 @@ ul {
 }
 
 :focus-visible {
-    outline: solid 2px var(--lblue);
+    outline: solid 2px var(--dblue);
     border-radius: 0;
 }
 
@@ -230,7 +230,7 @@ form {
     border-style: solid;
     border-image: linear-gradient(to bottom right, var(--lblue), var(--dblue)) 1;
     text-align: center;
-    margin: 2rem 0;
+    margin: 1.5rem 0 0.5rem;
     padding: 0.3rem;
     height: 1.5rem;
     font-size: 0.8rem;
