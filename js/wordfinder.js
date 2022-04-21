@@ -1,7 +1,6 @@
 let answer;
 let usedWords = [];
 let allData = {};
-let remainingGuesses = 5;
 let totalScore = 0;
 const submitButton = document.querySelector('.submit-btn');
 const results = document.querySelector('#results');
@@ -9,7 +8,6 @@ const results = document.querySelector('#results');
 const startButton = document.querySelector('#start');
 
 const handleButtonClick = (event) => {
-
     const instructions = document.querySelector('.instructions');
     const game = document.querySelector('.game');
 
@@ -45,9 +43,10 @@ const playButton = document.querySelector('#start');
 
 function playNextRound () {
     submitButton.style.visibility = 'visible';
+    results.style.visibility = 'hidden';
     document.querySelector('#guess').style.visibility = 'visible';
     playAgain.style.display ='none';
-    document.querySelector('#guess').placeholder = 'Your Guess is...'
+    document.querySelector('#guess').placeholder = 'Your Guess is...';
     if (usedWords.length === allData.length) {
         return '';
     }
@@ -74,7 +73,6 @@ function showSynonyms (randomWord) {
     let synonyms = allData[randomWord];
     let container = document.querySelector('#container');
     container.innerHTML = '';
-    results.innerHTML = '';
     synonyms.forEach(item => {
         const listItem = document.createElement('li');
         const textNode = document.createTextNode(`${item}`);
@@ -94,13 +92,13 @@ function pickWord(allData) {
 
 function noRemainingGuesses() {
     if(remainingGuesses === 0){
-        submitButton.style.visibility = 'hidden'
+        submitButton.style.visibility = 'hidden';
         playAgain.style.display = 'block';
         document.querySelector('#guess').style.visibility = 'hidden';
     }
 }
 
-function updateScoreDisplay(roundScore) {
+function updateScoreDisplay() {
     const userScore = document.querySelector('.score');
     userScore.innerText = totalScore;
 }
@@ -114,8 +112,8 @@ function  pointCalculation(userGuess) {
     let roundScore = 0;
     if (answer===userGuess) {
         usedWords.push(answer);
-        roundScore = remainingGuesses
-        totalScore += roundScore
+        roundScore = remainingGuesses;
+        totalScore += roundScore;
         updateScoreDisplay(roundScore);
     } else {
         remainingGuesses --;
@@ -138,14 +136,13 @@ const submitFunction = (event) => {
     // Guess logic
     if (answer === userGuess) {
         results.appendChild(correct);
-        submitButton.style.visibility = 'hidden'
+        submitButton.style.visibility = 'hidden';
         setTimeout(playNextRound, 1000);
     } else {
-        // pointCalculation(userGuess);
         results.appendChild(incorrect);
-        submitButton.style.visibility = 'visible'
+        submitButton.style.visibility = 'visible';
     }
-    pointCalculation(userGuess); //?
+    pointCalculation(userGuess);
 }
 
 submitButton.addEventListener('click', submitFunction);
