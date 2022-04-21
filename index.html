@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>W | Word Finder</title>
+    <title>WordRunner | A JavaScript Game</title>
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/style.css">
     <script src="js/wordfinder.js" defer></script>
@@ -11,13 +11,13 @@
 <body>
 <div id="wrapper">
     <header>
-        <h1 class="logo">W</h1>
-        <h1 class="title">WordFinder</h1>
+        <h1 class="title">Wordrunner</h1>
+        <h1 class="logo">B</h1>
     </header>
     <main>
         <div class="instructions">
             <h3>Instructions</h3>
-            <p>WordFinder is a guess the word game designed to challenge your knowledge of words.</p>
+            <p>WordRunner is a guess the word game designed to challenge your knowledge of words.</p>
             <ol>
                 <li>Guess the word based on the synonyms provided.</li>
                 <li>Press the guess button to submit your guess.</li>
@@ -26,16 +26,21 @@
             <button id="start">Start Game</button>
         </div>
         <div class="game">
-            <div class="score"></div>
-            <div class="guesses-remaining"></div>
-            <h2 class="syn-header">Synonyms</h2>
+            <div class="score-box">
+                <p>Score</p>
+                <p class="score">0</p>
+            </div>
             <hr>
             <ul id="container">
             </ul>
             <form>
-                <input id="guess" type="text" placeholder="Your Guess is...">
+                <input id="guess" type="text" placeholder="Your guess is...">
                 <button type="submit" class="submit-btn">Guess</button>
             </form>
+            <div class="guess-box">
+                <p class="guess-header">Guesses remaining</p>
+                <p class="guesses-remaining"></p>
+            </div>
             <p id="results">placeholder</p>
             <button id="again">Play again</button>
         </div>

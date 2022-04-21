@@ -45,6 +45,7 @@ const playButton = document.querySelector('#start');
 
 function playNextRound () {
     submitButton.style.visibility = 'visible';
+    document.querySelector('#guess').style.visibility = 'visible';
     playAgain.style.display ='none';
     document.querySelector('#guess').placeholder = 'Your Guess is...'
     if (usedWords.length === allData.length) {
@@ -95,10 +96,11 @@ function noRemainingGuesses() {
     if(remainingGuesses === 0){
         submitButton.style.visibility = 'hidden'
         playAgain.style.display = 'block';
+        document.querySelector('#guess').style.visibility = 'hidden';
     }
 }
 
-function updateScoreDisplay() {
+function updateScoreDisplay(roundScore) {
     const userScore = document.querySelector('.score');
     userScore.innerText = totalScore;
 }
@@ -108,41 +110,42 @@ function updateRemainingGuesses(remainingGuesses) {
     userScore.innerText = remainingGuesses;
 }
 
+function  pointCalculation(userGuess) {
+    let roundScore = 0;
+    if (answer===userGuess) {
+        usedWords.push(answer);
+        roundScore = remainingGuesses
+        totalScore += roundScore
+        updateScoreDisplay(roundScore);
+    } else {
+        remainingGuesses --;
+        noRemainingGuesses();
+        updateRemainingGuesses(remainingGuesses);
+    }
+}
+
 const submitFunction = (event) => {
-    let roundScore;
     const correct = document.createTextNode(`Correct! You scored: ${remainingGuesses} points`);
+    const incorrect = document.createTextNode('Incorrect!');
     event.preventDefault();
     let userGuess = document.querySelector('#guess').value;
 
+    results.innerHTML = '';
+    results.style.visibility = 'visible';
+    document.querySelector('#guess').value = '';
+    document.querySelector('#guess').placeholder = userGuess;
+
     // Guess logic
     if (answer === userGuess) {
-        results.innerHTML = '';
         results.appendChild(correct);
-        usedWords.push(answer);
-        results.style.visibility = 'visible';
-        document.querySelector('#guess').value = '';
-        document.querySelector('#guess').placeholder = userGuess;
-        roundScore = remainingGuesses
-        totalScore += roundScore
-        console.log(`total score ${totalScore}`)
         submitButton.style.visibility = 'hidden'
-        updateScoreDisplay();
-        setTimeout(playNextRound, 1500);
+        setTimeout(playNextRound, 1000);
     } else {
-        results.innerHTML = '';
-        document.querySelector('#guess').value = '';
-        document.querySelector('#guess').placeholder = userGuess;
-        results.style.visibility = 'visible';
-        remainingGuesses --;
-        roundScore = remainingGuesses
-        console.log(roundScore);
-        const incorrect = document.createTextNode(`Incorrect! Guesses remaining ${roundScore}`);
-        submitButton.style.visibility = 'visible'
-        noRemainingGuesses();
+        // pointCalculation(userGuess);
         results.appendChild(incorrect);
-        console.log(remainingGuesses);
-        updateRemainingGuesses(remainingGuesses);
+        submitButton.style.visibility = 'visible'
     }
+    pointCalculation(userGuess); //?
 }
 
 submitButton.addEventListener('click', submitFunction);
