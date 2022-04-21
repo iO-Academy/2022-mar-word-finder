@@ -39,6 +39,11 @@ form {
     padding-top: 0.5rem;
 }
 
+#clock {
+    text-align: center;
+    padding-top: 0.5rem;
+}
+
 /*Main body*/
 
 main {

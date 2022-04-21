@@ -2,6 +2,8 @@ let answer;
 let usedWords = [];
 let allData = {};
 let totalScore = 0;
+let timerId;
+let timeLeft;
 const submitButton = document.querySelector('.submit-btn');
 const results = document.querySelector('#results');
 
@@ -42,6 +44,10 @@ const playButton = document.querySelector('#start');
 const guess = document.querySelector('#guess');
 
 function playNextRound () {
+    timeLeft = 30;
+    clearInterval(timerId);
+    timerId = setInterval(countdown, 1000);
+    document.querySelector('#clock').style.visibility = 'visible';
     submitButton.style.visibility = 'visible';
     results.style.visibility = 'hidden';
     guess.style.visibility = 'visible'
@@ -55,6 +61,7 @@ function playNextRound () {
     showSynonyms(answer);
     updateScoreDisplay();
     updateRemainingGuesses(remainingGuesses);
+    countdown();
     return answer;
 }
 
@@ -96,6 +103,7 @@ function noRemainingGuesses() {
         submitButton.style.visibility = 'hidden';
         playAgain.style.display = 'block';
         document.querySelector('#guess').style.visibility = 'hidden';
+        document.querySelector('#clock').style.visibility = 'hidden';
     }
 }
 
@@ -138,7 +146,7 @@ const submitFunction = (event) => {
     if (answer === userGuess) {
         results.appendChild(correct);
         submitButton.style.visibility = 'hidden';
-        setTimeout(playNextRound, 1000);
+        setTimeout(playNextRound, 1500);
     } else {
         results.appendChild(incorrect);
         submitButton.style.visibility = 'visible';
@@ -147,3 +155,15 @@ const submitFunction = (event) => {
 }
 
 submitButton.addEventListener('click', submitFunction);
+
+const timeDiv = document.querySelector('#clock');
+
+function countdown() {
+    if (timeLeft === -1) {
+        timeDiv.innerText = "Unlucky - Time's Up!";
+        playAgain.style.display = 'block';
+    } else if (remainingGuesses !== 0) {
+        timeDiv.innerText = `Time Remaining ${timeLeft}s`
+        timeLeft--;
+    }
+}
