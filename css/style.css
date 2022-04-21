@@ -1,10 +1,19 @@
 /*Utility*/
 
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Roboto:wght@400;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@200;300;400&display=swap');
+
+@font-face {
+    font-family: 'Bladerunner';
+    src: url('../fonts/BLADRMF_.TTF');
+    font-weight: normal;
+}
 
 :root {
-    --bg: #323232;
-    --font: #ffffff;
+    --bg: #001321;
+    --font: #0ff9e4;
+    --lblue: #34c0b0;
+    --dblue: #3976e8;
 }
 
 .game {
@@ -12,8 +21,8 @@
 }
 
 * {
-    font-family: 'Roboto', sans-serif;
-    font-size: 24px;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 20px;
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -26,9 +35,8 @@ form {
 }
 
 #results {
-    visibility: hidden;
     text-align: center;
-    margin-top: 1rem;
+    padding-top: 0.5rem;
 }
 
 /*Main body*/
@@ -49,7 +57,9 @@ body {
     margin: 0.8rem auto 0 auto;
     padding: 1rem;
     width: 90%;
-    border: 1px solid var(--font);
+    border-width: 3px;
+    border-style: solid;
+    border-image: linear-gradient(to bottom right, var(--lblue), var(--dblue)) 1;
 }
 
 /*Header*/
@@ -61,27 +71,26 @@ header {
 }
 
 h1 {
+    font-family: 'Bladerunner', sans-serif;
     font-size: 1.2rem;
+    color: #90fff5;
 }
 
 h2 {
     font-size: 1rem;
 }
 
-.logo {
-    background: var(--font);
-    color: #333333;
-    padding: 0 0.5rem;
+h3 {
+    font-size: 1.4rem;
 }
 
-.syn-header {
-    text-align: center;
-    margin-bottom: 1.4rem;
-    font-size: 1rem;
+ol > li {
+    color: #09bba9;
 }
 
 hr {
     margin-bottom: 1rem;
+    border-color:  #09bba9;
 }
 
 /*Synonym output*/
@@ -102,11 +111,21 @@ ul {
 
 /*Input field*/
 
+::placeholder {
+    color: #004679;
+}
+
+:focus-visible {
+    outline: solid 2px var(--dblue);
+    border-radius: 0;
+}
+
 #guess {
     width: 80%;
-    border: 1px solid #d5d5d5;
+    border-width: 2px;
+    border-style: solid;
+    border-image: linear-gradient(to bottom right, var(--lblue), var(--dblue)) 1;
     background: var(--bg);
-    border-radius: 8px;
     padding-left: 0.5rem;
     line-height: 1.4rem;
     color: var(--font);
@@ -119,22 +138,66 @@ form {
     column-gap: 0.6rem;
 }
 
-.submit-btn,
-#again {
-    border: 1px solid var(--bg);
+.submit-btn {
+    border-width: 2px;
+    border-style: solid;
+    border-image: linear-gradient(to bottom right, var(--lblue), var(--dblue)) 1;
     padding: 0.3rem;
-    border-radius: 8px;
+    height: 1.5rem;
+    font-size: 0.8rem;
+    background-color: var(--bg);
+    color: var(--font);
+}
+
+#again {
+    margin-top: 1rem;
+    width: 100%;
+    border-width: 2px;
+    border-style: solid;
+    border-image: linear-gradient(to bottom right, var(--lblue), var(--dblue)) 1;
+    padding: 0.3rem;
     height: 1.5rem;
     font-size: 0.8rem;
     transition: 0.3s;
+    background-color: var(--bg);
+    color: var(--font);
 }
 
-.submit-btn:hover,
+.score-box {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0.5rem;
+    font-size: 1rem;
+}
+
+.guess-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0.2rem 0.2rem 0.2rem;
+    font-size: 1rem;
+}
+
+.guess-header {
+    font-size: 0.8rem;
+}
+
+.score {
+    text-align: center;
+}
+
+.submit-btn:hover {
+    background-image: linear-gradient(to right, var(--bg) 85%, var(--lblue));
+    animation: slideguess 0.2s linear;
+    cursor: pointer;
+}
+
 .instructions button:hover,
 #again:hover {
-    border: 1px solid var(--font);
-    background: var(--bg);
-    color: var(--font);
+    background-image: linear-gradient(to right, var(--bg) 95%, var(--lblue));
+    animation: slidebg 0.2s linear;
+    cursor: pointer;
 }
 
 .instructions {
@@ -156,15 +219,34 @@ form {
 }
 
 .instructions button {
-    width: 50%;
+    border-width: 2px;
+    border-style: solid;
+    border-image: linear-gradient(to bottom right, var(--lblue), var(--dblue)) 1;
     text-align: center;
-    margin: 2rem auto;
-    border: 1px solid var(--bg);
+    margin: 1.5rem 0 0.5rem;
     padding: 0.3rem;
-    border-radius: 8px;
     height: 1.5rem;
     font-size: 0.8rem;
-    transition: 0.3s;
+    background-color: var(--bg);
+    color: var(--font);
+}
+
+@keyframes slidebg {
+    to {
+        background-position: 200px;
+    }
+}
+
+@keyframes slideguess {
+    to {
+        background-position: 50px;
+    }
+}
+
+@media only screen and (min-width: 360px) {
+    h1 {
+        font-size: 1.4rem;
+    }
 }
 
 @media only screen and (min-width: 440px) {
