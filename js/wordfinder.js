@@ -15,8 +15,7 @@ const handleButtonClick = (event) => {
         instructions.style.display = 'block';
         game.style.display = 'none';
         startButton.innerText = 'hide';
-    }
-    else {
+    } else {
         instructions.style.display = 'none';
         game.style.display = 'block';
     }
@@ -110,7 +109,7 @@ function updateRemainingGuesses(remainingGuesses) {
 
 function  pointCalculation(userGuess) {
     let roundScore = 0;
-    if (answer===userGuess) {
+    if (answer === userGuess) {
         usedWords.push(answer);
         roundScore = remainingGuesses;
         totalScore += roundScore;
