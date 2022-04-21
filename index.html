@@ -17,7 +17,7 @@
     <main>
         <div class="instructions">
             <h3>Instructions</h3>
-            <p>WordFinder is a guess the word game designed to challenge your knowledge of words.</p>
+            <p>WordRunner is a guess the word game designed to challenge your knowledge of words.</p>
             <ol>
                 <li>Guess the word based on the synonyms provided.</li>
                 <li>Press the guess button to submit your guess.</li>
@@ -26,7 +26,10 @@
             <button id="start">Start Game</button>
         </div>
         <div class="game">
-            <h2 class="syn-header">Synonyms</h2>
+            <div class="score-box">
+                <p class="syn-header">Score</p>
+                <p class="score">0</p>
+            </div>
             <hr>
             <ul id="container">
             </ul>
@@ -34,6 +37,10 @@
                 <input id="guess" type="text" placeholder="Your guess is...">
                 <button type="submit" class="submit-btn">Guess</button>
             </form>
+            <div class="guess-box">
+                <p class="guess-header">Guesses remaining</p>
+                <p class="guess-number">5</p>
+            </div>
             <p id="results">placeholder</p>
             <button id="again">Play again</button>
         </div>

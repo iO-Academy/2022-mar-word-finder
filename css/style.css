@@ -22,7 +22,7 @@
 
 * {
     font-family: 'Josefin Sans', sans-serif;
-    font-size: 24px;
+    font-size: 20px;
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -37,7 +37,8 @@ form {
 #results {
     visibility: hidden;
     text-align: center;
-    margin-top: 1rem;
+    padding-top: 0.5rem;
+
 }
 
 /*Main body*/
@@ -73,7 +74,7 @@ header {
 
 h1 {
     font-family: 'Bladerunner', sans-serif;
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     color: #90fff5;
 }
 
@@ -89,11 +90,10 @@ ol > li {
     color: #09bba9;
 }
 
-.syn-header {
-    text-align: center;
-    margin-bottom: 1.4rem;
-    font-size: 1rem;
-}
+/*.syn-header {*/
+/*    text-align: center;*/
+/*    */
+/*}*/
 
 hr {
     margin-bottom: 1rem;
@@ -152,7 +152,6 @@ form {
     padding: 0.3rem;
     height: 1.5rem;
     font-size: 0.8rem;
-    transition: 0.3s;
     background-color: var(--bg);
     color: var(--font);
 }
@@ -171,12 +170,41 @@ form {
     color: var(--font);
 }
 
-.submit-btn:hover,
+.score-box {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0.5rem;
+    font-size: 1rem;
+}
+
+.guess-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0.2rem 0.2rem 0.2rem;
+    font-size: 1rem;
+}
+
+.guess-header {
+    font-size: 0.8rem;
+}
+
+.score {
+    text-align: center;
+}
+
+.submit-btn:hover {
+    background-image: linear-gradient(to right, var(--bg), var(--bg), var(--bg), var(--bg), var(--bg), var(--lblue));
+    animation: slideguess 0.2s linear;
+    cursor: pointer;
+}
+
 .instructions button:hover,
 #again:hover {
-    border-width: 2px;
-    border-style: solid;
-    border-image: linear-gradient(to bottom right, var(--dblue), var(--lblue)) 1;
+    background-image: linear-gradient(to right, var(--bg), var(--bg), var(--bg), var(--bg), var(--bg), var(--lblue));
+    animation: slidebg 0.2s linear;
+    cursor: pointer;
 }
 
 .instructions {
@@ -206,9 +234,26 @@ form {
     padding: 0.3rem;
     height: 1.5rem;
     font-size: 0.8rem;
-    transition: 0.2s;
     background-color: var(--bg);
     color: var(--font);
+}
+
+@keyframes slidebg {
+    to {
+        background-position: 200px;
+    }
+}
+
+@keyframes slideguess {
+    to {
+        background-position: 50px;
+    }
+}
+
+@media only screen and (min-width: 360px) {
+    h1 {
+        font-size: 1.4rem;
+    }
 }
 
 @media only screen and (min-width: 440px) {
